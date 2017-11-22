@@ -13,3 +13,12 @@
     background-image: none;
   }
 }
+.currencyPair__name {
+  margin-right: 40px;
+}
+.currencyPair__value {
+  float: right;
+  font-family: monospace;
+  font-size: $defaultMonoFontSize;
+  line-height: 1;
+}

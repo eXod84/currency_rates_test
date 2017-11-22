@@ -4,9 +4,17 @@ import '../../styles/_currencyRateTable.scss';
 
 
 const CurrencyRateTable = ({data}) => {
+  const maxDigitsAfterPoint = data.reduce((acc, curr) => {
+
+    const amountOfDigits = curr.price.toString().split('.')[1].length;
+    if( acc < amountOfDigits ) acc = amountOfDigits;
+
+    return acc;
+  }, 0);
+
   return(
     <ul className="currencyRateTable">
-      {data.map((el) => <CurrencyPair data={el} />)}
+      {data.map((el) => <CurrencyPair data={el} maxDigitsAfterPoint={maxDigitsAfterPoint}/>)}
     </ul>
   );
 };

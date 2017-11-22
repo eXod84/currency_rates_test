@@ -12,10 +12,11 @@
 .currencyRateTable__manageBtns {
   margin-top: 2rem;
   display: flex;
-  justify-content: space-around;
+  justify-content: center;
 }
 .currencyRateTable__manageBtns__item {
   flex: 0 1 auto;
+  margin: 0 20px;
 }
 
 .currencyRateTable__manageBtns__refresh {
