@@ -1,0 +1,24 @@
+.basicButton {
+  cursor: pointer;
+  text-indent: -9999px;
+  border: none;
+  display: inline-block;
+  opacity: 0.8;
+
+  &:hover {
+    opacity: 1;
+  }
+
+  &:focus {
+    outline: none;
+  }
+}
+
+@mixin imageButton($imageUrl, $width: 4rem, $height: 4rem) {
+  @extend .basicButton;
+
+  width: $width;
+  height: $height;
+  background: transparent url($imageUrl);
+  background-size: cover;
+}

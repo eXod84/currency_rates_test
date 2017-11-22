@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-import CurrencyPair from '../components/currencyPair';
+import CurrencyRateTable from '../components/currencyRateTable';
+import '../../styles/_currencyRatePage.scss';
 
 const DATA = [
   {
@@ -33,12 +34,14 @@ class CurrencyRatesPage extends Component {
     return(
       <div className="currencyRatePage">
         <div className="currencyRateTableWrpr">
-          <ul className="currencyRateTable">
-            {DATA.map((el) => <CurrencyPair data={el} />)}
-          </ul>
+          <CurrencyRateTable data={DATA} />
           <div className="currencyRateTable__manageBtns">
-            <button className="currencyRateTable__manageBtns__refresh">Refresh</button>
-            <Link to="/settings" className="currencyRateTable__manageBtns__addNew">Add new</Link>
+            <div className="currencyRateTable__manageBtns__item">
+              <button className="currencyRateTable__manageBtns__refresh">Refresh</button>
+            </div>
+            <div className="currencyRateTable__manageBtns__item">
+              <Link to="/settings" className="currencyRateTable__manageBtns__addNew">Add new</Link>
+            </div>
           </div>
         </div>
       </div>

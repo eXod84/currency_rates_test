@@ -1,0 +1,27 @@
+@import "common";
+@import "constants";
+
+.currencyRateTable {
+  margin: 0;
+  padding: 0.8rem 1.8rem;
+  border-radius: 25px;
+  background-color: $currencyRateTableBckgColor;
+  box-shadow: rgba(0,0,0,0.4) 0 0 15px;
+}
+
+.currencyRateTable__manageBtns {
+  margin-top: 2rem;
+  display: flex;
+  justify-content: space-around;
+}
+.currencyRateTable__manageBtns__item {
+  flex: 0 1 auto;
+}
+
+.currencyRateTable__manageBtns__refresh {
+  @include imageButton('../images/refresh_ico.svg');
+}
+
+.currencyRateTable__manageBtns__addNew {
+  @include imageButton('../images/settings_ico.svg');
+}

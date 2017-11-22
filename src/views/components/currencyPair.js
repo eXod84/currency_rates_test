@@ -1,5 +1,6 @@
 import React from 'react';
 import CurrencyName from './currencyName';
+import '../../styles/_currencyPair.scss';
 
 
 const CurrencyPair = ({data}) => {

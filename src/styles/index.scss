@@ -1,8 +1,21 @@
 @import "normalize.css";
 @import "constants";
 
+html {
+  height: 100%;
+}
 body {
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-size: $defaultFontSize;
+  background-color: $pageBckgColor;
+  height: 100%;
+}
+
+#root {
+  height: 100%;
+}
+
+.contentWrpr {
+  height: 100%;
 }
 
