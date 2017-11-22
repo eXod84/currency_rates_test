@@ -1,0 +1,10 @@
+@import "common";
+
+.manageBtns {
+  margin: 5rem auto;
+  text-align: center;
+}
+
+.manageBtns__acceptSettings {
+  @include imageButton('../images/accept_ico.svg');
+}

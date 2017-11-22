@@ -1,0 +1,16 @@
+.currencyList__currencyItem__selectItem {
+  font-weight: bold;
+
+
+  input {
+    display: none;
+  }
+
+  .currencyName {
+    color: #324a85;
+  }
+
+  input:checked + .currencyName {
+    color: #fff;
+  }
+}

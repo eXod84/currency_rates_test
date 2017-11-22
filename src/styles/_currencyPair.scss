@@ -18,7 +18,8 @@
 }
 .currencyPair__value {
   float: right;
-  font-family: monospace;
+  font-family: "Lucida Console", Monaco, monospace;
   font-size: $defaultMonoFontSize;
-  line-height: 1;
+  line-height: 1.3;
+  vertical-align: baseline;
 }

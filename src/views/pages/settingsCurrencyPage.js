@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-import CurrencySelectItem from '../components/currencySelectItem';
+import CurrencyList from '../components/currencyList';
+import '../../styles/_settingsCurrencyPage.scss';
 
 const DATA = [
   "AUDJPY",
@@ -28,20 +29,13 @@ const DATA = [
 
 class AddCurrencyPage extends Component {
 
-  renderCurrencies() {
-    return DATA.map(el => <li className="addCurrencyPage__currencyList__currencyItem">
-      <CurrencySelectItem symbol={el}/>
-    </li>);
-  }
 
   render() {
 
     return(
       <div className="addCurrencyPage">
-        <ul className="addCurrencyPage__currencyList">
-          {this.renderCurrencies()}
-        </ul>
-        <div className="manageBtns"><Link to="/">OK</Link></div>
+        <CurrencyList data={DATA}/>
+        <div className="manageBtns"><Link className="manageBtns__acceptSettings" to="/">OK</Link></div>
       </div>
     )
   }

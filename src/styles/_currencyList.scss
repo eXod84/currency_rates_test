@@ -1,0 +1,12 @@
+.currencyList {
+  margin: 3rem auto 0 auto;
+  padding: 0;
+  column-count: 3;
+  width: 40rem;
+}
+
+.currencyList__currencyItem {
+  display: block;
+  margin: 0;
+  padding: 10px 0;
+}
