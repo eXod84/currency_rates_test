@@ -17,7 +17,7 @@ const CurrencyPair = ({data, maxDigitsAfterPoint}) => {
 
 
 CurrencyPair.propTypes = {
-  data: PropTypes.array.isRequired,
+  data: PropTypes.object.isRequired,
   maxDigitsAfterPoint: PropTypes.number.isRequired,
 };
 
