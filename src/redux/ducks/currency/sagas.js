@@ -1,7 +1,10 @@
 import { takeEvery, call, put, all, select } from 'redux-saga/effects';
+import { delay } from 'redux-saga';
 import * as actions from './actions';
 import * as actionTypes from './actionTypes';
 import { loadCurrencies, loadRates } from '../../utils/api';
+
+const refreshDelay = 1000 * 60;
 
 const getIsLoading = (state) => state.currency.isLoading;
 const getSelectedCurrencies = (state) => state.currency.selectedCurrencies;
@@ -41,9 +44,23 @@ function* getRates() {
   }
 }
 
+function* updateRates() {
+  while(true) {
+    yield call(delay, refreshDelay);
+
+    const isLoading = yield select(getIsLoading);
+
+    if(!isLoading) {
+      yield put(actions.requestLoadRates());
+    }
+
+  }
+}
+
 export default function* rootSaga() {
   yield all([
     takeEvery(actionTypes.REQUEST_LOAD_CURRENCIES, getCurrencies),
     takeEvery(actionTypes.REQUEST_LOAD_RATES, getRates),
+    call(updateRates)
   ])
 }
