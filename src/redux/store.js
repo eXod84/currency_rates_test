@@ -1,13 +1,20 @@
-import { createStore, combineReducers, compose, applyMiddleware } from 'redux';
+import { createStore, compose, applyMiddleware } from 'redux';
+import { persistStore, persistCombineReducers } from 'redux-persist';
+import storage from 'redux-persist/es/storage';
 import reducers from './ducks';
 import buildMiddleWare, { sagaMiddleware } from './middleware';
 import currencySaga from './ducks/currency/sagas';
 
 const initialState = {};
+const config = {
+  key: 'root',
+  storage,
+};
 
 export default function buildStore() {
+  let reducer = persistCombineReducers(config, reducers);
   const store = createStore(
-    combineReducers(reducers),
+    reducer,
     initialState,
     compose(
       applyMiddleware(...buildMiddleWare()),
@@ -15,7 +22,9 @@ export default function buildStore() {
     )
   );
 
+  let persistor = persistStore(store);
+
   sagaMiddleware.run(currencySaga);
 
-  return store;
+  return { persistor, store };
 }
