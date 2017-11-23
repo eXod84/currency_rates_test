@@ -14,7 +14,7 @@ const CurrencyRateTable = ({data}) => {
 
   return(
     <ul className="currencyRateTable">
-      {data.map((el) => <CurrencyPair data={el} maxDigitsAfterPoint={maxDigitsAfterPoint}/>)}
+      {data.map((el) => <CurrencyPair data={el} maxDigitsAfterPoint={maxDigitsAfterPoint} key={el.symbol} />)}
     </ul>
   );
 };

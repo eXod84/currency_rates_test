@@ -1,43 +1,33 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
+import { bindActionCreators } from 'redux';
+import { connect } from 'react-redux';
+import * as actionCreators from '../../redux/ducks/currency/actions';
 import { Link } from 'react-router-dom';
 import CurrencyRateTable from '../components/currencyRateTable';
 import '../../styles/_currencyRatePage.scss';
 
-const DATA = [
-  {
-    symbol: "AUDUSD",
-    price: 0.792495,
-    bid: 0.79248,
-    ask: 0.79251,
-    timestamp: 1502160793
-  },
-  {
-    symbol: "EURUSD",
-    price: 1.181,
-    bid: 1.18099,
-    ask: 1.18101,
-    timestamp: 1502160794
-  },
-  {
-    symbol: "GBPJPY",
-    price: 144.3715,
-    bid: 144.368,
-    ask: 144.375,
-    timestamp: 1502160794
-  }
-];
 
 class CurrencyRatesPage extends Component {
+
+  componentWillMount() {
+    this.props.actions.requestLoadRates();
+  }
 
   render() {
 
     return(
       <div className="currencyRatePage">
         <div className="currencyRateTableWrpr">
-          <CurrencyRateTable data={DATA} />
+          <CurrencyRateTable data={this.props.rates} />
           <div className="currencyRateTable__manageBtns">
             <div className="currencyRateTable__manageBtns__item">
-              <button className="currencyRateTable__manageBtns__refresh">Refresh</button>
+              <button
+                className="currencyRateTable__manageBtns__refresh"
+                onClick={() => this.props.actions.requestLoadRates()}
+              >
+                Refresh
+              </button>
             </div>
             <div className="currencyRateTable__manageBtns__item">
               <Link to="/settings" className="currencyRateTable__manageBtns__addNew">Add new</Link>
@@ -49,6 +39,23 @@ class CurrencyRatesPage extends Component {
   }
 }
 
+const mapStateToProps = (state) => {
+  return {
+    rates: state.currency.rates,
+    isLoading: state.currency.isLoading,
+  }
+};
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    actions: bindActionCreators(actionCreators, dispatch)
+  }
+};
+
+CurrencyRatesPage.propTypes = {
+  rates: PropTypes.array.isRequired,
+  isLoading: PropTypes.bool.isRequired,
+};
 
 
-export default CurrencyRatesPage;
+export default connect(mapStateToProps, mapDispatchToProps)(CurrencyRatesPage);

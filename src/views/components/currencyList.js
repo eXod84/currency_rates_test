@@ -6,7 +6,7 @@ import '../../styles/_currencyList.scss';
 const CurrencyList = ({data, selectedCurrencies, onSetSelectCurrency, onRemoveSelectCurrency}) => {
   return(
     <ul className="currencyList">
-      {data.map(el => <li className="currencyList__currencyItem">
+      {data.map(el => <li className="currencyList__currencyItem" key={el}>
         <CurrencySelectItem
           symbol={el}
           selected={selectedCurrencies.includes(el)}
