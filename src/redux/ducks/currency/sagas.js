@@ -31,8 +31,14 @@ function* getCurrencies() {
     "AUDCHF",
   ];
 
-  yield call(delay, 1000);
-  yield put(actions.loadCurrenciesSuccess(DATA));
+  const isLoading = yield select(getIsLoading);
+
+  if(!isLoading) {
+    yield put(actions.requestCurrenciesLoading());
+
+    yield call(delay, 1000);
+    yield put(actions.loadCurrenciesSuccess(DATA));
+  }
 }
 
 function* getRates() {
@@ -61,8 +67,14 @@ function* getRates() {
     }
   ];
 
-  yield call(delay, 1000);
-  yield put(actions.loadRatesSuccess(DATA));
+  const isLoading = yield select(getIsLoading);
+
+  if(!isLoading) {
+    yield put(actions.requestRatesLoading());
+
+    yield call(delay, 1000);
+    yield put(actions.loadRatesSuccess(DATA));
+  }
 }
 
 export default function* rootSaga() {

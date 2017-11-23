@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import CurrencyPair from './currencyPair';
 import '../../styles/_currencyRateTable.scss';
 
@@ -17,6 +18,10 @@ const CurrencyRateTable = ({data}) => {
       {data.map((el) => <CurrencyPair data={el} maxDigitsAfterPoint={maxDigitsAfterPoint} key={el.symbol} />)}
     </ul>
   );
+};
+
+CurrencyRateTable.propTypes = {
+  data: PropTypes.array.isRequired,
 };
 
 export default CurrencyRateTable;

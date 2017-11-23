@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import CurrencyName from './currencyName';
 import '../../styles/_currencyPair.scss';
 
@@ -12,6 +13,12 @@ const CurrencyPair = ({data, maxDigitsAfterPoint}) => {
       <span className="currencyPair__value">{`${data.price}${'\0'.repeat(maxDigitsAfterPoint-amountOfDigits)}`}</span>
     </li>
   );
+};
+
+
+CurrencyPair.propTypes = {
+  data: PropTypes.array.isRequired,
+  maxDigitsAfterPoint: PropTypes.number.isRequired,
 };
 
 export default CurrencyPair;

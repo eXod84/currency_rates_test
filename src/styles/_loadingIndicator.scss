@@ -1,0 +1,21 @@
+@import "common";
+
+.loadingIndicatorWrpr {
+  position: fixed;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  display: flex;
+  justify-content: center;
+  background-color: rgba(0,0,0,0.5);
+}
+
+.loadingIndicator {
+  @include imageButton('../images/loading_ico.svg');
+
+  align-self: center;
+  animation: spin 1s infinite;
+}
+
+@keyframes spin { 100% { transform:rotate(360deg); } }

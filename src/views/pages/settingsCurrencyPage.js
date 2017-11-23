@@ -4,6 +4,7 @@ import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import * as actionCreators from '../../redux/ducks/currency/actions';
 import { Link } from 'react-router-dom';
+import LoadingIndicator from '../components/loadingIndicator';
 import CurrencyList from '../components/currencyList';
 import '../../styles/_settingsCurrencyPage.scss';
 
@@ -39,6 +40,7 @@ class AddCurrencyPage extends Component {
           onRemoveSelectCurrency={this.removeSelectCurrency}
         />
         <div className="manageBtns"><Link className="manageBtns__acceptSettings" to="/">OK</Link></div>
+        { this.props.isLoading? <LoadingIndicator /> : null }
       </div>
     )
   }

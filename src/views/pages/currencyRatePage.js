@@ -4,6 +4,7 @@ import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import * as actionCreators from '../../redux/ducks/currency/actions';
 import { Link } from 'react-router-dom';
+import LoadingIndicator from '../components/loadingIndicator';
 import CurrencyRateTable from '../components/currencyRateTable';
 import '../../styles/_currencyRatePage.scss';
 
@@ -34,6 +35,7 @@ class CurrencyRatesPage extends Component {
             </div>
           </div>
         </div>
+        { this.props.isLoading? <LoadingIndicator /> : null }
       </div>
     )
   }
